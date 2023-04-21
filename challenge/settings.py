@@ -39,9 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'cabin.apps.AirlineConfig',
+    "debug_toolbar",
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,7 +53,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 ROOT_URLCONF = 'challenge.urls'
 
 TEMPLATES = [
@@ -77,11 +84,13 @@ WSGI_APPLICATION = 'challenge.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cabin_1',
+        'HOST': 'localhost',
+        'USER': 'root',
+        'PASSWORD': 'ali1997313'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
