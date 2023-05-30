@@ -58,7 +58,6 @@ def query_7():
         .annotate(n=Count("riderequest__ride"))
         .values("n")
     )
-
     # q = Rider.objects.filter(riderequest__ride__car__car_type = 'B').annotate(n = Count('riderequest__ride'))
     return q
 
